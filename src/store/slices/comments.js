@@ -4,9 +4,10 @@ import { mockComments } from "store/api";
 export const name = "comments";
 const initialState = {
   comments: mockComments,
+  // This reduce function takes the list of comments and creates an object of "commenter: # of comments" kv pairs
   commenters: mockComments.reduce((commentersToNow, comment) => {
     let name = comment.name;
-    return { ...commentersToNow, [name]: commentersToNow[name] + 1 || 1 };
+    return { ...commentersToNow, [name]: commentersToNow[name] + 1 || 1 }; // if commentersToNow[name] is undefined, use 1 instead
   }, {}),
 };
 
